@@ -1,0 +1,226 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-decoration: none;
+}
+
+/* navbar */
+.navbar {
+  display: grid;
+  grid-template-columns: repeat(3, 33.3%);
+  color: white;
+  background-color: rgb(20, 20, 20);
+}
+
+.navbar * {
+  margin: auto;
+}
+
+.navbarSidebarToggle {
+  font-size: 2.5rem;
+  margin-left: 2vw;
+  cursor: pointer;
+}
+
+.navbarLogo {
+  width: 10vh;
+}
+
+.searchBar {
+  width: 20vw;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 1.3rem;
+  background-color: rgb(20, 20, 20);
+  margin-right: 2vw;
+}
+
+
+
+/* Sidebar */
+.sidebarClosed {
+  display: none;
+}
+
+.sidebarOpened {
+  color: white;
+  position: absolute;
+  width: 25vw;
+  text-align: center;
+  background-color: rgb(20, 20, 20);
+  z-index: 5;
+}
+
+.sidebarOpened * {
+  margin: 3vh 0;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: ease .2s;
+}
+
+.sidebarOpened *:hover {
+  color: red;
+}
+
+/* Carousel */
+.carousel {
+  background-color: rgb(20, 20, 20);
+}
+
+.carouselProduct {
+  text-align: center;
+  background-color: white;
+  margin: 2vh 2vw;
+  border-radius: 1rem;
+}
+
+.carouselProductDiscount {
+  background-color: red;
+  padding: 2vh 0;
+  border-radius: 1rem;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+
+/* Products */
+.productContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 33.3%);
+  background-color: rgb(20, 20, 20);
+  min-height: 100vh;
+}
+
+.product {
+  margin: 3vh 3vw;
+  text-decoration: none;
+  border-radius: 1rem;
+  text-align: center;
+  font-size: 1.5rem;
+  background-color: white;
+  color: black;
+  height: 50vh;
+}
+
+.productTitle {
+  margin: 2vh 2vw;
+  height: 10vh;
+}
+
+.productImage {
+  border-radius: 1rem;
+  width: 15vw;
+}
+
+.productDiscount {
+  margin: 2vh 2vw;
+  padding: 1vh 0;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  border-radius: 1rem;
+}
+
+
+/* Pagination */
+.paginationContainer {
+  padding: 2vh 10vw;
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  background-color: rgb(20, 20, 20);
+  font-size: 3rem;
+}
+.pageArrowActive {
+  color: white;
+}
+.pageArrowBlocked {
+  color: rgb(20, 20, 20);
+}
+
+/* Footer */
+.footer {
+  display: grid;
+  grid-template-columns: repeat(3, 33.3%);
+  background-color: rgb(20, 20, 20);
+}
+
+.footer * {
+  margin: 1vh auto;
+  font-size: 5rem;
+  color: white;
+  transition: ease .2s;
+}
+
+.footerFacebookLogo *:hover {
+  color: #3b5998;
+}
+
+.footerInstagramLogo *:hover {
+  color: rgb(225, 48, 108);
+}
+
+.footerWhatsappLogo *:hover {
+  color: #25D366;
+}
+
+
+
+@media screen and (max-width: 800px) {
+
+  /* Navbar */
+  .navbarLogo {
+    width: 7vh;
+    margin-right: 20vw;
+  }
+
+  .searchBar {
+    width: 35vw;
+    font-size: 1rem;
+    margin-left: -10vw;
+  }
+
+  /* Sidebar */
+  .sidebarOpened {
+    width: 70vw;
+  }
+
+  /* Products */
+  .productContainer {
+    grid-template-columns: 100%;
+  }
+
+  .product {
+    margin: 2vh 8vw;
+    height: 52vh;
+  }
+
+  .productImage {
+    width: 50vw;
+  }
+
+  /* Footer */
+  .footer * {
+    font-size: 3rem;
+  }
+
+  .footerFacebookLogo * {
+    color: #3b5998;
+  }
+
+  .footerInstagramLogo * {
+    color: rgb(225, 48, 108);
+  }
+
+  .footerWhatsappLogo * {
+    color: #25D366;
+  }
+
+}
