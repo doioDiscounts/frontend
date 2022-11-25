@@ -1,10 +1,9 @@
 import React from "react";
-import Carousel from '../components/Carousel'
 import ProductContainer from "../components/ProductContainer";
 import Navbar from "../components/Navbar"
-import Sidebar from "../components/Sidebar"
 import Footer from "../components/Footer"
 import Pagination from "../components/Pagination";
+import Sidebar from "../components/Sidebar";
 
 export default function Home() {
 
@@ -12,7 +11,6 @@ export default function Home() {
         <div>
             <Navbar />
             <Sidebar />
-            <Carousel />
             <ProductContainer />
             <Pagination />
             <Footer />

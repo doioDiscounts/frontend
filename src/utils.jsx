@@ -1,9 +1,33 @@
-import React from "react"
+import React from 'react';
 import axios from 'axios'
 
-export const Context = React.createContext()
+const Context = React.createContext();
 
-export const hooks = () => {
+export function useAppContext() {
+    return React.useContext(Context);
+}
+
+export function ContextProvider(props) {
+
+    const paginationArrowClassname = () => {
+        return {
+            previous: state.previousPage ? 'pageArrowActive' : 'pageArrowBlocked',
+            forward: state.forwardPage ? 'pageArrowActive' : 'pageArrowBlocked',
+        }
+    }
+
+    const toggleSearch = (value) => {
+        let searchItem = value
+        if (value.target) {
+            value.preventDefault()
+            searchItem = value.target.firstChild.value
+        }
+        setState(p => ({ ...p, searchItem }))
+    }
+
+    const togglePagination = (direction) => {
+        setState(p => ({ ...p, pageNumber: state.pageNumber + direction }))
+    }
 
     const [state, setState] = React.useState({
         products: [],
@@ -11,9 +35,9 @@ export const hooks = () => {
         items: 12,
         pageNumber: 1,
         searchItem: false,
-        sidebarActive: false,
         previousPage: false,
-        forwardPage: true
+        forwardPage: true,
+        isSidebarOpen: false
     })
 
     React.useMemo(() => {
@@ -46,41 +70,21 @@ export const hooks = () => {
 
     }, [state.searchItem, state.pageNumber])
 
-    return { state, setState }
-}
-
-export const toggleSidebar = (context) => {
-    context.setState(p => ({ ...p, sidebarActive: !context.state.sidebarActive }))
-}
-
-export const sidebarClassname = (context) => {
-    let classname = 'sidebarClosed'
-    if (context.state.sidebarActive) {
-        classname = 'sidebarOpened'
+    const value = {
+        state,
+        setState,
+        paginationArrowClassname,
+        toggleSearch,
+        togglePagination
     }
-    return classname
-}
 
-export const paginationArrowClassname = (context) => {
-    return {
-        previous: context.state.previousPage ? 'pageArrowActive' : 'pageArrowBlocked',
-        forward: context.state.forwardPage ? 'pageArrowActive' : 'pageArrowBlocked',
-    }
-}
-
-export const toggleSearch = (context, value) => {
-    let searchItem = value
-    if (value.target) {
-        value.preventDefault()
-        searchItem = value.target.firstChild.value
-    }
-    context.setState(p => ({ ...p, searchItem }))
+    return (
+        <Context.Provider value={value}>
+            {props.children}
+        </Context.Provider>
+    );
 }
 
 export const sendClickInfo = (provider) => {
     axios.post('http://localhost:3001/sendClickInfo', { provider })
-}
-
-export const togglePagination = (context, direction) => {
-    context.setState(p => ({ ...p, pageNumber: context.state.pageNumber + direction }))
 }

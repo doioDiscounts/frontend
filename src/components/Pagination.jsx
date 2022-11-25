@@ -1,21 +1,27 @@
 import React from "react";
-import { Context, paginationArrowClassname, togglePagination } from "../utils";
+import { useAppContext } from "../utils";
 
 export default function Pagination() {
 
-    const context = React.useContext(Context)
+    const { paginationArrowClassname, togglePagination } = useAppContext()
 
     return (
         <div className="paginationContainer">
             <div
-                className={paginationArrowClassname(context).previous}
-                onClick={() => togglePagination(context, -1)}
+                className={paginationArrowClassname().previous}
+                onClick={() => {
+                    togglePagination(-1)
+                    window.scrollTo({ top: 0 })
+                }}
             >
                 <ion-icon name="arrow-back-outline"></ion-icon>
             </div>
             <div
-                className={paginationArrowClassname(context).forward}
-                onClick={() => togglePagination(context, 1)}
+                className={paginationArrowClassname().forward}
+                onClick={() => {
+                    togglePagination(1)
+                    window.scrollTo({ top: 0 })
+                }}
             >
                 <ion-icon name="arrow-forward-outline"></ion-icon>
             </div>

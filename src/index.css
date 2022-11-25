@@ -44,28 +44,53 @@
 
 
 /* Sidebar */
-.sidebarClosed {
-  display: none;
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 50;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
-.sidebarOpened {
-  color: white;
-  position: absolute;
-  width: 25vw;
-  text-align: center;
+.sidenav {
+  max-width: 24rem;
+  overflow: hidden;
+  width: 85%;
+  height: 100%;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
   background-color: rgb(20, 20, 20);
-  z-index: 5;
+  transform-origin: left center;
+  transform: translateX(-420px);
+  overflow-y:auto
 }
 
-.sidebarOpened * {
+.sidenav * {
+  text-align: center;
+  font-size: 2rem;
   margin: 3vh 0;
-  font-size: 1.5rem;
+  color: white;
   cursor: pointer;
-  transition: ease .2s;
+  transition: color .5s;
 }
 
-.sidebarOpened *:hover {
+.sidenav *:hover {
   color: red;
+}
+
+@keyframes moveSideBar {
+  0% {
+    transform: translateX(-420px);
+    z-index: 100;
+  }
+
+  100% {
+    transform: translateX(-0px);
+  }
 }
 
 /* Carousel */
@@ -132,15 +157,19 @@
 /* Pagination */
 .paginationContainer {
   padding: 2vh 10vw;
-  text-align: center;
   display: grid;
   grid-template-columns: repeat(2, 50%);
   background-color: rgb(20, 20, 20);
-  font-size: 3rem;
 }
+
 .pageArrowActive {
   color: white;
+  cursor: pointer;
+  font-size: 3rem;
+  text-align: center;
+  margin: 0 10vw;
 }
+
 .pageArrowBlocked {
   color: rgb(20, 20, 20);
 }

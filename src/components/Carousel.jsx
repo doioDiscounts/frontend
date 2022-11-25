@@ -2,13 +2,9 @@ import { Swiper, SwiperSlide, } from 'swiper/react';
 import { Autoplay } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/autoplay'
-import CarouselProduct from './CarouselProduct';
 import React from 'react';
-import { Context } from '../utils';
 
 export default function Carousel() {
-
-    const context = React.useContext(Context)
 
     return (
         <Swiper
@@ -18,15 +14,23 @@ export default function Carousel() {
             autoplay={{ delay: 2000 }}
             breakpoints={{ 800: { slidesPerView: 2 } }}
         >
-            {/* {context.state && (
+            {context.state && (
                 context.state.products.map(p => (
                     p._source.featured == 2 ? (
                         <SwiperSlide className='carouselSlide'>
-                            <CarouselProduct product={p} />
+                            <div className='carouselProduct'>
+                                <a
+                                    onClick={() => sendClickInfo(p._source.provider)}
+                                    href={p._source.link}
+                                >
+                                    <img className="carouselProductImage" src={p._source.imageLink} alt="img" />
+                                    <div className="carouselProductDiscount">{p._source.discount}% de descuento</div>
+                                </a>
+                            </div>
                         </SwiperSlide>
                     ) : (<></>)
                 ))
-            )} */}
+            )}
         </Swiper>
     );
 };
